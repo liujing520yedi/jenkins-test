@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-demo
+spec:
+  template:
+    metadata:
+      labels:
+        app: jenkins-demo
+    spec:
+      imagePullSecrets:
+      - name: harbor
+      containers:
+      - image: 172.16.0.70:80/liujing/nginx:1.18.0
+        imagePullPolicy: IfNotPresent
+        name: jenkins-demo
